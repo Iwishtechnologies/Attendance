@@ -130,7 +130,7 @@ public class Takepicture extends AppCompatActivity {
         ConnectionServer connectionServer = new ConnectionServer();
         connectionServer.requestedMethod("POST");
         connectionServer.set_url(Constants.UPLOAD);
-        connectionServer.buildParameter("wid",workerId);
+            connectionServer.buildParameter("wid",workerId);
         connectionServer.buildParameter("sid",Supervisorid);
         connectionServer.buildParameter("date",date);
         connectionServer.buildParameter("time",time);
