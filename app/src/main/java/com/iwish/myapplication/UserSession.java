@@ -56,6 +56,10 @@ public class UserSession {
 
 
     // check first time app launch
+    public static final String INTERNET = "internet";
+
+
+    // check first time app launch
     public static final String HOSPITALID = "hospitalid";
 
     // Constructor
@@ -197,4 +201,13 @@ public class UserSession {
         return user;
     }
 
+
+    public Boolean getInternet() {
+
+        return Boolean.valueOf(pref.getString(INTERNET,""));
+    }
+
+    public void setInternet(String string) {
+       editor.putString(INTERNET,string).commit();
+    }
 }
