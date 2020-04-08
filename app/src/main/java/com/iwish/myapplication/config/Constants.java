@@ -18,6 +18,10 @@ public class Constants {
     public static String UPLOAD = URL+"upload.php";
     public static String FEEDBACKDATA = URL+"feedbackdata.php";
     public static String SAVEFEEDBACK = URL+"savefeedback.php";
+    public static String SUPERUPLOAD = URL+"superupload.php";
+
+
+
 
 
 

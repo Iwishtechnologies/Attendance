@@ -109,7 +109,7 @@
                 android:layout_marginRight="10dp"
                 android:clickable="false"
                 android:focusable="false"
-                android:src="@drawable/see"
+                android:src="@drawable/yellow_camera"
                 android:layout_weight="0.5"/>
 
             <!--            <ImageView-->

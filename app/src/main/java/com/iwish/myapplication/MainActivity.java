@@ -23,9 +23,13 @@ import com.kaopiz.kprogresshud.KProgressHUD;
 
 import org.json.JSONArray;
 
+import ir.hamiss.internetcheckconnection.InternetAvailabilityChecker;
+import ir.hamiss.internetcheckconnection.InternetConnectivityListener;
+
 import static com.iwish.myapplication.Attendance_list.REQUSET_IMAGE_CAPTURE;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements InternetConnectivityListener {
+    private InternetAvailabilityChecker mInternetAvailabilityChecker;
     KProgressHUD kProgressHUD;
     EditText user,pass;
     Button login;
@@ -39,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         userSession= new UserSession(MainActivity.this);
         userSession.checkLogin();
         kProgressHUD= new KProgressHUD(MainActivity.this);
@@ -49,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
         user= findViewById(R.id.user);
         pass= findViewById(R.id.pass);
         login= findViewById(R.id.login);
+        mInternetAvailabilityChecker = InternetAvailabilityChecker.init(this);
+        mInternetAvailabilityChecker.addInternetConnectivityListener(this);
 
         int requestCode = 200;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -101,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                         {
                             jsonHelper.setChildjsonObj(jsonArray,i);
 
-                            userSession.createLoginSession(jsonHelper.GetResult("supervisor_id"),jsonHelper.GetResult("hospital_id"),jsonHelper.GetResult("\tsupervisorName"));
+                            userSession.createLoginSession(jsonHelper.GetResult("supervisor_id"),jsonHelper.GetResult("supervisorName"),jsonHelper.GetResult("hospital_id"),jsonHelper.GetResult("image"),"daf");
 
                         }
                         Intent intent= new Intent(MainActivity.this,Attendance_list.class);
@@ -167,6 +174,26 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+
+    @Override
+    public void onInternetConnectivityChanged(boolean isConnected) {
+        if (isConnected){
+            if(userSession.getInternet()){
+                Intent intent= new Intent(MainActivity.this,Attendance_list.class);
+                startActivity(intent);
+                Animatoo.animateCard(MainActivity.this);
+                userSession.setInternet(String.valueOf(true));
+            }
+
+        }
+        else {
+            Intent intent= new Intent(MainActivity.this,Main2Activity.class);
+            intent.putExtra("activity","login");
+            startActivity(intent);
+            Animatoo.animateCard(MainActivity.this);
+        }
+    }
 
 
 }

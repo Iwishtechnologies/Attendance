@@ -28,12 +28,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Main2Activity"></activity>
-        <activity android:name=".Feedback" />
-        <activity android:name=".Attendance_list" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".Takepicture" />
-        <activity android:name=".Splash">
+        <activity android:name=".Main2Activity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".SuperTakePicture" android:screenOrientation="portrait"></activity>
+        <activity android:name=".Feedback" android:screenOrientation="portrait"/>
+        <activity android:name=".Attendance_list" android:screenOrientation="portrait" />
+        <activity android:name=".MainActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".Takepicture" android:screenOrientation="portrait" />
+        <activity android:name=".Splash" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

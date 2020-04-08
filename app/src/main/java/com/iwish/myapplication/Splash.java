@@ -25,9 +25,9 @@ public class Splash extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         checkConnection =new CheckConnection(this);
         userSession= new UserSession(this);
-        userSession.setInternet(String.valueOf(true));
-        Intent intent = new Intent(Splash.this,CheckConnection.class);
-        checkConnection.onStartCommand(intent,1,1);
+        userSession.setInternet(String.valueOf(false));
+//        Intent intent = new Intent(Splash.this,CheckConnection.class);
+//        checkConnection.onStartCommand(intent,1,1);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);

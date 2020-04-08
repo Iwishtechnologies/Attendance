@@ -45,7 +45,11 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
-public class Feedback extends AppCompatActivity {
+import ir.hamiss.internetcheckconnection.InternetAvailabilityChecker;
+import ir.hamiss.internetcheckconnection.InternetConnectivityListener;
+
+public class Feedback extends AppCompatActivity implements InternetConnectivityListener {
+    private InternetAvailabilityChecker mInternetAvailabilityChecker;
     KProgressHUD kProgressHUD;
     CheckBox point1,point2,point3,point4,point5;
     String one,two,three,four,five ,path;
@@ -66,6 +70,7 @@ public class Feedback extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback);
+
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
@@ -85,6 +90,8 @@ public class Feedback extends AppCompatActivity {
         room= findViewById(R.id.room);
         sign= findViewById(R.id.sign);
         clear= findViewById(R.id.clear);
+        mInternetAvailabilityChecker = InternetAvailabilityChecker.init(this);
+        mInternetAvailabilityChecker.addInternetConnectivityListener(this);
         data= new ArrayList<>();
         id= new ArrayList<>();
         feedback();
@@ -176,7 +183,7 @@ public class Feedback extends AppCompatActivity {
 
                 }
                 else {
-                    Toast.makeText(Feedback.this, "Signature is Requiredr", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Feedback.this, "Signature is Required", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -236,7 +243,7 @@ public class Feedback extends AppCompatActivity {
                                     if(checkBox.isChecked()){
 
 
-                                            Toast.makeText(Feedback.this, ""+checkBox.getId(), Toast.LENGTH_SHORT).show();
+//                                            Toast.makeText(Feedback.this, ""+checkBox.getId(), Toast.LENGTH_SHORT).show();
 //                                    data.add(checkBox.getText().toString());
                                             data.add(String.valueOf(id.get(checkBox.getId())));
                                             Log.e("data", String.valueOf(data));
@@ -357,6 +364,23 @@ public class Feedback extends AppCompatActivity {
         }
 
         return true;
+    }
+
+
+    @Override
+    public void onInternetConnectivityChanged(boolean isConnected) {
+        if (isConnected){
+            Intent intent= new Intent(Feedback.this,Attendance_list.class);
+
+            startActivity(intent);
+            Animatoo.animateCard(Feedback.this);
+        }
+        else {
+            Intent intent= new Intent(Feedback.this,Main2Activity.class);
+            intent.putExtra("activity","feedback");
+            startActivity(intent);
+            Animatoo.animateCard(Feedback.this);
+        }
     }
 
 }

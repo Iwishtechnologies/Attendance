@@ -64,6 +64,178 @@
 
     </LinearLayout>
 
+
+
+
+
+
+
+
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:weightSum="3"
+        android:layout_weight="0"
+        android:gravity="center"
+        android:background="@drawable/attendance_row_background">
+
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:id="@+id/superphoto"
+            android:scaleType="fitXY"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_weight="1.5"
+            android:weightSum="3"
+            android:paddingLeft="10dp"
+            android:paddingTop="15dp"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:maxLength="12"
+                android:id="@+id/supername"
+                android:text="manoj banjare"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:id="@+id/id"
+                android:maxLength="12"
+                android:text="Supervisor"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:id="@+id/hospital"
+                android:visibility="gone"
+                android:text="Birla Hospital"/>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal|center_vertical">
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:visibility="visible"
+                    android:id="@+id/supercamera"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/camera3"
+                    android:layout_weight="0.5"/>
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:visibility="gone"
+                    android:id="@+id/superright"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/right_icon"
+                    android:layout_weight="0.5"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_horizontal|center_vertical">
+
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:visibility="visible"
+                    android:id="@+id/superlive"
+                    android:layout_marginRight="10dp"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:src="@drawable/yellow_camera"
+                    android:layout_weight="0.5"/>
+
+                <!--            <ImageView-->
+                <!--                android:layout_width="50dp"-->
+                <!--                android:layout_height="50dp"-->
+                <!--                android:visibility="gone"-->
+                <!--                android:id="@+id/outright"-->
+                <!--                android:layout_marginRight="10dp"-->
+                <!--                android:src="@drawable/right_icon"-->
+                <!--                android:layout_weight="0.5"/>-->
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_horizontal|center_vertical">
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:visibility="visible"
+                    android:id="@+id/superoutcamera"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/camera3"
+                    android:layout_weight="0.5"/>
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:visibility="gone"
+                    android:id="@+id/superoutright"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/right_icon"
+                    android:layout_weight="0.5"/>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

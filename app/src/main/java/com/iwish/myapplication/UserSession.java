@@ -62,6 +62,12 @@ public class UserSession {
     // check first time app launch
     public static final String HOSPITALID = "hospitalid";
 
+    public static final String INSTATUS = "instatus";
+
+    public static final String PHOTO = "photo";
+
+    public static final String HOSPITALNAME = "hospitalname";
+
     // Constructor
     public UserSession(Context context){
         this.context = context;
@@ -70,7 +76,7 @@ public class UserSession {
     }
 
 
-    public void createLoginSession( String id ,String name, String hospital){
+    public void createLoginSession( String id ,String name, String hospital ,String photo,String Hname){
         // Storing login value as TRUE
         editor.putBoolean(IS_LOGIN, true);
 
@@ -82,6 +88,8 @@ public class UserSession {
 
         // Storing phone number in pref
         editor.putString(HOSPITALID, hospital);
+        editor.putString(PHOTO, photo);
+        editor.putString(HOSPITALNAME, Hname);
         // storing duty status in pref
 //        editor.putString(DUTY_STATUS,"false");
 
@@ -127,6 +135,8 @@ public class UserSession {
 
         // user phone number
         user.put(HOSPITALID, pref.getString(HOSPITALID, null));
+        user.put(PHOTO, pref.getString(PHOTO, null));
+        user.put(HOSPITALNAME, pref.getString(HOSPITALNAME, null));
 
         // user avatar
 //        user.put(KEY_PHOTO, pref.getString(KEY_PHOTO, null)) ;
@@ -209,5 +219,15 @@ public class UserSession {
 
     public void setInternet(String string) {
        editor.putString(INTERNET,string).commit();
+    }
+
+
+    public Boolean getinstatus() {
+
+        return Boolean.valueOf(pref.getString(INSTATUS,""));
+    }
+
+    public void setinstatus(String string) {
+        editor.putString(INSTATUS,string).commit();
     }
 }

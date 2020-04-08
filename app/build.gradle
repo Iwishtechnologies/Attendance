@@ -36,4 +36,7 @@ dependencies {
 
 
     implementation 'com.github.gcacace:signature-pad:1.2.1'
+
+
+    implementation 'com.github.BehradJafari:checkInternetConnection-Android:1.0.1'
 }
