@@ -121,7 +121,7 @@ public class SuperTakePicture extends AppCompatActivity {
 //        camera.deleteImage();
 //    }
 
-    public void upload( String Supervisorid, String image, String  date, String time , final String inout){
+    public void upload(String Supervisorid, final String image, String  date, String time , final String inout){
         setProgressDialog("uploading ...");
         ConnectionServer connectionServer = new ConnectionServer();
         connectionServer.requestedMethod("POST");
@@ -145,6 +145,8 @@ public class SuperTakePicture extends AppCompatActivity {
                         if(inout.equals("Live")){
                             Toast.makeText(SuperTakePicture.this,"Succesfully send Live:", Toast.LENGTH_SHORT).show();
                         }
+                        File file = new File(image);
+                        file.delete();
                         finish();
                         onBackPressed();
 //                        Animatoo.animateSplit(Takepicture.this);

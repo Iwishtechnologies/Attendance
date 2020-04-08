@@ -21,8 +21,6 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.iwish.myapplication.config.Constants;
 import com.iwish.myapplication.connection.ConnectionServer;
 import com.iwish.myapplication.connection.JsonHelper;
@@ -125,7 +123,7 @@ public class Takepicture extends AppCompatActivity {
 //        camera.deleteImage();
 //    }
 
-    public void upload(String workerId, String Supervisorid, String image, String  date, String time , final String inout){
+    public void upload(String workerId, String Supervisorid, final String image, String  date, String time , final String inout){
         setProgressDialog("uploading ...");
         ConnectionServer connectionServer = new ConnectionServer();
         connectionServer.requestedMethod("POST");
@@ -148,7 +146,10 @@ public class Takepicture extends AppCompatActivity {
                         remove_progress_Dialog();
                         if(inout.equals("Live")){
                             Toast.makeText(Takepicture.this,"Succesfully send Live:", Toast.LENGTH_SHORT).show();
+
                         }
+                        File file = new File(image);
+                        file.delete();
                         finish();
                        onBackPressed();
 //                        Animatoo.animateSplit(Takepicture.this);
